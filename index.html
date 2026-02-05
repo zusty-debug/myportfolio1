@@ -257,26 +257,34 @@
         </span>
     </div>
 </footer>
-    <><script>
-    function updateClock() {
-        const now = new Date();
-        // This gets your local time (IST) automatically
-        const h = String(now.getHours()).padStart(2, '0');
-        const m = String(now.getMinutes()).padStart(2, '0');
-        
-        const element = document.getElementById('clock');
-        if (element) {
-            // Updated label to IST
-            element.innerText = h + ":" + m + " IST";
-        }
-    }
-    // Update every second for precision
-    setInterval(updateClock, 1000);
-    updateClock();
-     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function updateClock() {
+            const now = new Date();
             
+            // This gets local time (IST)
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            
+            // Try to find by ID first, then by class if ID fails
+            let element = document.getElementById('clock');
+            
+            if (element) {
+                element.innerText = h + ":" + m + " IST";
+            } else {
+                // Fallback: search for the specific tailwind classes
+                const fallback = document.querySelector('.text-primary.font-mono');
+                if (fallback) fallback.innerText = h + ":" + m + " IST";
+            }
+        }
 
-</div> </body></html>
+        // Run immediately
+        updateClock();
+        // Update every 10 seconds (saves battery/CPU)
+        setInterval(updateClock, 10000);
+    });
+                                                                                </script>
+            </div> </body></html>
 
         
 </body></html>
