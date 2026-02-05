@@ -257,22 +257,24 @@
         </span>
     </div>
 </footer>
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const hours = now.getISTHours().toString().padStart(2, '0');
-            const minutes = now.getISTMinutes().toString().padStart(2, '0');
-            const timeString = `${hours}:${minutes} UTC`;
-            
-            // This targets the specific span in your header
-            const timeDisplay = document.querySelector('header .text-primary.font-mono');
-            if(timeDisplay) {
-                timeDisplay.innerText = timeString;
-            }
+    <><script>
+    function updateClock() {
+        const now = new Date();
+        // This gets your local time (IST) automatically
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        
+        const element = document.getElementById('clock');
+        if (element) {
+            // Updated label to IST
+            element.innerText = h + ":" + m + " IST";
         }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
+    }
+    // Update every second for precision
+    setInterval(updateClock, 1000);
+    updateClock();
+     </script>
+            
 
 </div> </body></html>
 
