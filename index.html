@@ -260,8 +260,8 @@
     <script>
         function updateTime() {
             const now = new Date();
-            const hours = now.getUTCHours().toString().padStart(2, '0');
-            const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+            const hours = now.getISTHours().toString().padStart(2, '0');
+            const minutes = now.getISTMinutes().toString().padStart(2, '0');
             const timeString = `${hours}:${minutes} UTC`;
             
             // This targets the specific span in your header
