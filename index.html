@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zusty D Mobile Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Space+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "accent-cyan": "#00f2ff",
+                        "accent-green": "#0bda5e",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0a0e",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .grid-bg {
+            background-image: linear-gradient(rgba(19, 91, 236, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(19, 91, 236, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            background-size: 100% 4px;
+        }
+        .glow-border {
+            box-shadow: 0 0 8px rgba(19, 91, 236, 0.2);
+            border: 1px solid rgba(19, 91, 236, 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.6);
+        }
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::after {
+            content: 'ZUSTY D';
+            position: absolute;
+            left: 2px;
+            text-shadow: -1px 0 #00f2ff;
+            top: 0;
+            color: white;
+            background: #0a0a0e;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #135bec;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-white selection:bg-primary selection:text-white antialiased">
+<div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+<div class="fixed inset-0 scanline pointer-events-none opacity-10 z-0"></div>
+<div class="relative z-10 flex flex-col min-h-screen pb-20">
+<header class="sticky top-0 h-14 flex items-center justify-between px-4 border-b border-primary/20 bg-background-dark/90 backdrop-blur-md z-50">
+<div class="flex items-center gap-3">
+<div class="size-7 bg-primary rounded-sm flex items-center justify-center glow-border">
+<span class="material-symbols-outlined text-white text-lg">satellite_alt</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold tracking-tighter leading-none text-white flex items-center gap-2 glitch-text">
+                        ZUSTY D <span class="text-[8px] bg-primary px-1 rounded animate-pulse">LIVE</span>
+</h1>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-2 py-1 rounded border border-primary/20">
+<span class="material-symbols-outlined text-primary text-xs">schedule</span>
+<span class="font-mono text-[10px] text-primary">04:20 UTC</span>
+</div>
+</header>
+<main class="p-4 space-y-4">
+<section class="h-80 bg-background-dark/60 rounded-lg glow-border relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&amp;w=2072&amp;auto=format&amp;fit=crop')] bg-cover bg-center grayscale contrast-125 opacity-40"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/40"></div>
+<div class="absolute inset-0 p-4 flex flex-col justify-between pointer-events-none">
+<div class="flex justify-between items-start">
+<div class="bg-black/70 backdrop-blur-md p-2 rounded border border-primary/40">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="size-1.5 rounded-full bg-primary animate-ping"></span>
+<span class="text-[8px] font-mono text-primary uppercase">Targeting ISS</span>
+</div>
+<p class="text-white font-mono text-[10px] tracking-tighter">51.50° N, 0.12° W</p>
+</div>
+<div class="size-16 border-2 border-dashed border-primary/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/40 text-2xl">radar</span>
+</div>
+</div>
+<div class="bg-black/70 backdrop-blur-md p-3 rounded border border-primary/40 w-full">
+<h4 class="text-[10px] font-bold text-accent-cyan font-mono mb-2 uppercase tracking-widest">Orbital Telemetry</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<span class="text-[8px] text-[#9da6b9] font-mono uppercase">Altitude</span>
+<span class="text-white font-mono text-base">408.2 KM</span>
+</div>
+<div class="flex flex-col border-l border-primary/20 pl-4">
+<span class="text-[8px] text-[#9da6b9] font-mono uppercase">Speed</span>
+<span class="text-white font-mono text-base">7.66 KM/S</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-background-dark/60 p-4 rounded-lg border border-primary/20 flex gap-4 items-center">
+<div class="size-14 rounded bg-primary/10 flex items-center justify-center border border-primary/30 relative">
+<span class="material-symbols-outlined text-primary text-3xl">person_pin_circle</span>
+<div class="absolute -top-1 -right-1 size-2.5 bg-accent-green rounded-full shadow-[0_0_8px_#0bda5e]"></div>
+</div>
+<div class="flex-1">
+<h2 class="text-white text-xs font-bold font-mono tracking-tight">OPERATOR: ZUSTY D</h2>
+<p class="text-accent-cyan text-[10px] font-mono opacity-80 mt-0.5">CLEARANCE: LVL 5 (ADMIN)</p>
+<div class="flex justify-between items-center mt-2">
+<span class="text-[#9da6b9] text-[9px] font-mono">ID: 0x82...FE21</span>
+<span class="text-accent-green text-[9px] font-mono flex items-center gap-1">
+<span class="size-1 bg-accent-green rounded-full"></span> ENCRYPTED
+                        </span>
+</div>
+</div>
+</section>
+<section class="bg-background-dark/60 p-4 rounded-lg border border-primary/20">
+<h3 class="text-[10px] font-bold text-primary font-mono flex items-center gap-2 uppercase tracking-widest mb-4">
+<span class="material-symbols-outlined text-sm">monitoring</span> System Health
+                </h3>
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-[9px] font-mono">
+<span class="text-[#9da6b9]">CYBER DEFENSE</span>
+<span class="text-accent-green">98%</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-accent-green w-[98%] shadow-[0_0_5px_#0bda5e]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-[9px] font-mono">
+<span class="text-[#9da6b9]">SATELLITE UPLINK</span>
+<span class="text-primary">75%</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] shadow-[0_0_5px_#135bec]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-[9px] font-mono">
+<span class="text-[#9da6b9]">NEURAL CORE</span>
+<span class="text-accent-cyan">42%</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-accent-cyan w-[42%] shadow-[0_0_5px_#00f2ff]"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-2">
+<h3 class="text-[10px] font-bold text-primary font-mono flex items-center gap-2 uppercase tracking-widest px-1">
+<span class="material-symbols-outlined text-sm">terminal</span> Core Competencies
+                </h3>
+<div class="grid grid-cols-1 gap-2">
+<div class="p-3 border border-primary/10 bg-primary/5 rounded flex gap-3 items-center">
+<span class="material-symbols-outlined text-accent-cyan">rocket_launch</span>
+<div class="flex flex-col">
+<span class="text-xs font-mono text-white">Orbital Data Modeling</span>
+<span class="text-[9px] text-[#9da6b9] font-mono">Telemetry analysis</span>
+</div>
+</div>
+<div class="p-3 border border-primary/10 bg-primary/5 rounded flex gap-3 items-center">
+<span class="material-symbols-outlined text-accent-cyan">security</span>
+<div class="flex flex-col">
+<span class="text-xs font-mono text-white">Space Infra Sec</span>
+<span class="text-[9px] text-[#9da6b9] font-mono">Network penetration</span>
+</div>
+</div>
+<div class="p-3 border border-primary/10 bg-primary/5 rounded flex gap-3 items-center">
+<span class="material-symbols-outlined text-accent-cyan">code</span>
+<div class="flex flex-col">
+<span class="text-xs font-mono text-white">Decentralized Comms</span>
+<span class="text-[9px] text-[#9da6b9] font-mono">E2E Protocols</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-background-dark/60 rounded-lg glow-border flex flex-col overflow-hidden">
+<div class="p-2 border-b border-primary/20 bg-primary/10 flex items-center justify-between">
+<h3 class="text-[10px] font-bold text-primary font-mono flex items-center gap-2 uppercase tracking-tighter">
+<span class="material-symbols-outlined text-xs">database</span> Database Excavation
+                    </h3>
+<div class="flex gap-1">
+<span class="size-1.5 bg-accent-green rounded-full shadow-[0_0_5px_#0bda5e]"></span>
+</div>
+</div>
+<div class="h-48 p-3 font-mono text-[9px] overflow-y-auto space-y-2 text-[#9da6b9] bg-black/40">
+<p class="text-accent-cyan">[23:59:01] INITIATING DEEP SCAN...</p>
+<p>[23:59:02] CONNECTION ESTABLISHED</p>
+<p class="text-white">&gt; Analyzing packet structure...</p>
+<p class="text-accent-green">[SUCCESS] REPOSITORY ACCESSED</p>
+<div class="h-px bg-primary/10 my-1"></div>
+<p class="text-white">&gt; PROJECT: "NEBULA-X"</p>
+<p class="text-white">&gt; TECH: RUST, WASM, SAT-IP</p>
+<p>[23:59:15] MONITORING TRAFFIC...</p>
+<p class="text-red-400">[WARN] PACKET LOSS: NODE_7</p>
+<p>[23:59:18] REROUTING VIA GEOSYNC_4</p>
+<p class="text-accent-green">[STABLE] ROUTE OPTIMIZED</p>
+<p class="text-white">&gt; Waiting for uplink command...</p>
+<div class="animate-pulse inline-block w-1 h-3 bg-primary ml-1"></div>
+</div>
+</section>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 h-16 bg-background-dark/95 border-t border-primary/30 z-50 backdrop-blur-xl px-2 flex items-center justify-around">
+<a class="flex flex-col items-center gap-1 text-[#9da6b9] hover:text-primary transition-colors" href="#">
+<div class="size-10 rounded border border-primary/20 flex items-center justify-center bg-primary/5">
+<span class="material-symbols-outlined text-xl">chat</span>
+</div>
+<span class="text-[8px] font-mono font-bold uppercase">Telegram</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#9da6b9] hover:text-primary transition-colors" href="#">
+<div class="size-10 rounded border border-primary/20 flex items-center justify-center bg-primary/5">
+<span class="material-symbols-outlined text-xl">camera</span>
+</div>
+<span class="text-[8px] font-mono font-bold uppercase">Instagram</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#9da6b9] hover:text-primary transition-colors" href="#">
+<div class="size-10 rounded border border-primary/20 flex items-center justify-center bg-primary/5">
+<span class="material-symbols-outlined text-xl">smart_display</span>
+</div>
+<span class="https://youtube.com/@thezustyd">YouTube</span>
+</a>
+<div class="h-10 w-px bg-primary/20 mx-1"></div>
+<div class="flex flex-col items-end">
+<span class="text-[7px] text-[#9da6b9] font-mono uppercase tracking-tighter">Status</span>
+<span class="text-[9px] font-mono text-accent-green flex items-center gap-1">
+<span class="size-1 bg-accent-green rounded-full animate-pulse"></span> SECURE
+                </span>
+</div>
+</footer>
+</div>
+
+</body></html>
